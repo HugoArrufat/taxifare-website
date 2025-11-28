@@ -15,7 +15,7 @@ st.set_page_config(
 # ----------------------------------
 #   Title
 # ----------------------------------
-st.title("🚕 TaxiFare Predictor 3000")
+st.title("🚕 TaxiFare Predictor 3000 V2")
 
 st.markdown("""
 
@@ -96,18 +96,17 @@ with col_pass:
 # Combine into datetime
 pickup_datetime = datetime.combine(pickup_date, pickup_time)
 
-# ----------------------------------
-#   API URL (replace by your own if needed)
-# ----------------------------------
-API_URL = "https://taxifare.lewagon.ai/predict"
+
+
 
 # ----------------------------------
 #   Prediction
 # ----------------------------------
+API_URL = "https://taxifare.lewagon.ai/predict"
 st.markdown("---")
 if st.button("🔮 Predict fare"):
 
-    # 1) Geocode pickup & dropoff
+    # Geocode pickup & dropoff
     pickup_coords = geocode(pickup_address)
     dropoff_coords = geocode(dropoff_address)
 
@@ -119,7 +118,7 @@ if st.button("🔮 Predict fare"):
         pickup_lat, pickup_lon = pickup_coords
         dropoff_lat, dropoff_lon = dropoff_coords
 
-        # 2) Params for API
+        # Params for API
         params = {
             "pickup_datetime": pickup_datetime.strftime("%Y-%m-%d %H:%M:%S"),
             "pickup_longitude": pickup_lon,
